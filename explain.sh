@@ -8,7 +8,7 @@ echo "Blue Honda"
 #echo "Hellen Maher"
 
 echo "Mike Bostock"
-echo "Joe Germuska"
 echo "Brian Boyer"
+echo "Joe Germuska"
 
 #echo "Jeremy Bowers"
