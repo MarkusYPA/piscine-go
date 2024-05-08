@@ -6,7 +6,7 @@ import (
 
 func PrintComb2() {
 
-	bn := 48 // base number for printing digits
+	bn := 48
 
 	for i := 0; i < 100; i++ {
 		for j := i + 1; j < 100; j++ {
