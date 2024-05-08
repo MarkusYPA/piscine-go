@@ -16,15 +16,25 @@ func PrintNbr(n int) {
 	}
 
 	runes := []rune{}
-	tempN := n
 	bn := 48
 
-	for tempN > 0 {
-		runes = append(runes, rune((tempN%10)+bn))
-		tempN = tempN / 10
+	maxfile := false
+
+	if n == -9223372036854775808 {
+		n = 922337203685477580
+		maxfile = true
+	}
+
+	for n > 0 {
+		runes = append(runes, rune((n%10)+bn))
+		n = n / 10
 	}
 
 	for i := len(runes) - 1; i > -1; i-- {
 		z01.PrintRune(runes[i])
+	}
+
+	if maxfile {
+		z01.PrintRune('8')
 	}
 }
