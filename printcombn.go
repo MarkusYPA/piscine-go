@@ -5,32 +5,23 @@ import (
 )
 
 func PrintCombN(n int) {
-
 	bn := 48 // base number for printing digits
 
 	for i := 0; i < 10; i++ {
-
 		if n > 1 {
 			for j := i + 1; j < 10; j++ {
-
 				if n > 2 {
 					for k := j + 1; k < 10; k++ {
-
 						if n > 3 {
 							for l := k + 1; l < 10; l++ {
-
 								if n > 4 {
 									for m := l + 1; m < 10; m++ {
-
 										if n > 5 {
 											for nn := m + 1; nn < 10; nn++ {
-
 												if n > 6 {
 													for o := nn + 1; o < 10; o++ {
-
 														if n > 7 {
 															for p := o + 1; p < 10; p++ {
-
 																if n > 8 {
 																	for q := p + 1; q < 10; q++ {
 
@@ -157,5 +148,4 @@ func PrintCombN(n int) {
 	}
 
 	z01.PrintRune('\n')
-
 }
