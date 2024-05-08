@@ -5,7 +5,6 @@ import (
 )
 
 func PrintComb2() {
-
 	bn := 48 // base number for printing numbers
 
 	for i := 0; i < 100; i++ {
@@ -13,7 +12,6 @@ func PrintComb2() {
 			z01.PrintRune(rune((i / 10) + bn))
 			z01.PrintRune(rune((i % 10) + bn))
 			z01.PrintRune(' ')
-
 			z01.PrintRune(rune((j / 10) + bn))
 			z01.PrintRune(rune((j % 10) + bn))
 

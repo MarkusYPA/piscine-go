@@ -5,7 +5,6 @@ import (
 )
 
 func PrintComb() {
-
 	bn := 48 // base number for printing digits
 
 	for i := 0; i < 10; i++ {
