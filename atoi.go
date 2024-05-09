@@ -3,13 +3,15 @@ package piscine
 func Atoi(s string) int {
 	factor := 1
 
-	if s[0] == 43 {
-		s = s[1:]
-	}
+	if s != "" {
+		if s[0] == 43 {
+			s = s[1:]
+		}
 
-	if s[0] == 45 {
-		factor = -1
-		s = s[1:]
+		if s[0] == 45 {
+			factor = -1
+			s = s[1:]
+		}
 	}
 
 	ints := make([]int, len(s))
