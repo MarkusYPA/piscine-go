@@ -1,6 +1,11 @@
 package piscine
 
 func Atoi(s string) int {
+
+	if len(s) == 0 {
+		return 0
+	}
+
 	factor := 1
 
 	if s[0] == '+' || s[0] == '-' {
