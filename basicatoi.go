@@ -17,11 +17,3 @@ func BasicAtoi(s string) int {
 
 	return result
 }
-
-func stringLength(s string) int {
-	length := 0
-	for range s {
-		length++
-	}
-	return length
-}
