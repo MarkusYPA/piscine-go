@@ -3,7 +3,7 @@ package piscine
 func Atoi(s string) int {
 	factor := 1
 
-	if len(s) != 0 {
+	if len(s) > 0 {
 		if s[0] == 43 {
 			s = s[1:]
 		}
