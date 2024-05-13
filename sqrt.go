@@ -9,7 +9,7 @@ func Sqrt(nb int) int {
 		return nb
 	}
 
-	result := powers(nb)
+	result := sqrtInt(nb)
 
 	if result*result == nb {
 		return result
@@ -18,7 +18,8 @@ func Sqrt(nb int) int {
 	}
 }
 
-func powers(nb int) int {
+// Returns the equal or next integer of the square root of nb
+func sqrtInt(nb int) int {
 	powa := 1
 
 	for i := 1; i < nb; i++ {
