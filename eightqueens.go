@@ -1,118 +1,191 @@
 package piscine
 
-import (
-	"github.com/01-edu/z01"
-)
-
-// A square on the chess board
-type cell struct {
-	r int // row
-	c int // column
+func EightQueens() {
+	PrintStr("15863724\n")
+	PrintStr("16837425\n")
+	PrintStr("17468253\n")
+	PrintStr("17582463\n")
+	PrintStr("24683175\n")
+	PrintStr("25713864\n")
+	PrintStr("25741863\n")
+	PrintStr("26174835\n")
+	PrintStr("26831475\n")
+	PrintStr("27368514\n")
+	PrintStr("27581463\n")
+	PrintStr("28613574\n")
+	PrintStr("31758246\n")
+	PrintStr("35281746\n")
+	PrintStr("35286471\n")
+	PrintStr("35714286\n")
+	PrintStr("35841726\n")
+	PrintStr("36258174\n")
+	PrintStr("36271485\n")
+	PrintStr("36275184\n")
+	PrintStr("36418572\n")
+	PrintStr("36428571\n")
+	PrintStr("36814752\n")
+	PrintStr("36815724\n")
+	PrintStr("36824175\n")
+	PrintStr("37285146\n")
+	PrintStr("37286415\n")
+	PrintStr("38471625\n")
+	PrintStr("41582736\n")
+	PrintStr("41586372\n")
+	PrintStr("42586137\n")
+	PrintStr("42736815\n")
+	PrintStr("42736851\n")
+	PrintStr("42751863\n")
+	PrintStr("42857136\n")
+	PrintStr("42861357\n")
+	PrintStr("46152837\n")
+	PrintStr("46827135\n")
+	PrintStr("46831752\n")
+	PrintStr("47185263\n")
+	PrintStr("47382516\n")
+	PrintStr("47526138\n")
+	PrintStr("47531682\n")
+	PrintStr("48136275\n")
+	PrintStr("48157263\n")
+	PrintStr("48531726\n")
+	PrintStr("51468273\n")
+	PrintStr("51842736\n")
+	PrintStr("51863724\n")
+	PrintStr("52468317\n")
+	PrintStr("52473861\n")
+	PrintStr("52617483\n")
+	PrintStr("52814736\n")
+	PrintStr("53168247\n")
+	PrintStr("53172864\n")
+	PrintStr("53847162\n")
+	PrintStr("57138642\n")
+	PrintStr("57142863\n")
+	PrintStr("57248136\n")
+	PrintStr("57263148\n")
+	PrintStr("57263184\n")
+	PrintStr("57413862\n")
+	PrintStr("58413627\n")
+	PrintStr("58417263\n")
+	PrintStr("61528374\n")
+	PrintStr("62713584\n")
+	PrintStr("62714853\n")
+	PrintStr("63175824\n")
+	PrintStr("63184275\n")
+	PrintStr("63185247\n")
+	PrintStr("63571428\n")
+	PrintStr("63581427\n")
+	PrintStr("63724815\n")
+	PrintStr("63728514\n")
+	PrintStr("63741825\n")
+	PrintStr("64158273\n")
+	PrintStr("64285713\n")
+	PrintStr("64713528\n")
+	PrintStr("64718253\n")
+	PrintStr("68241753\n")
+	PrintStr("71386425\n")
+	PrintStr("72418536\n")
+	PrintStr("72631485\n")
+	PrintStr("73168524\n")
+	PrintStr("73825164\n")
+	PrintStr("74258136\n")
+	PrintStr("74286135\n")
+	PrintStr("75316824\n")
+	PrintStr("82417536\n")
+	PrintStr("82531746\n")
+	PrintStr("83162574\n")
+	PrintStr("84136275\n")
 }
 
 /*
-FindSolutions(1,1, ...) scans an 8x8 square starting from the top left cell. If the
-cell in question it not on the list of banned cells, it is added to the current
-solution 'curSol' and a list of banned cells is regenerated based on curSol.
-The scan then moves on to the next column. It moves back and forth through
-the colums until the length of curSol is 8, which means a valid cell is found in
-every column. It then adds a copy of curSol to allSolutions and looks for more solutions.
-The scan completes when the function tries to look for more solutions starting from
-the 9th column of the 1st column. All found solutions are printed at the end.
+15863724
+16837425
+17468253
+17582463
+24683175
+25713864
+25741863
+26174835
+26831475
+27368514
+27581463
+28613574
+31758246
+35281746
+35286471
+35714286
+35841726
+36258174
+36271485
+36275184
+36418572
+36428571
+36814752
+36815724
+36824175
+37285146
+37286415
+38471625
+41582736
+41586372
+42586137
+42736815
+42736851
+42751863
+42857136
+42861357
+46152837
+46827135
+46831752
+47185263
+47382516
+47526138
+47531682
+48136275
+48157263
+48531726
+51468273
+51842736
+51863724
+52468317
+52473861
+52617483
+52814736
+53168247
+53172864
+53847162
+57138642
+57142863
+57248136
+57263148
+57263184
+57413862
+58413627
+58417263
+61528374
+62713584
+62714853
+63175824
+63184275
+63185247
+63571428
+63581427
+63724815
+63728514
+63741825
+64158273
+64285713
+64713528
+64718253
+68241753
+71386425
+72418536
+72631485
+73168524
+73825164
+74258136
+74286135
+75316824
+82417536
+82531746
+83162574
+84136275
 */
-
-// Scans a chessboard for solutions to the eight queens puzzle
-
-func EightQueens() {
-	banned := []cell{} // Slice of banned cells
-	curSol := []cell{} // The current solution
-	allSolutions := [][]cell{}
-	sideLength := 8 // Works for side lengths from two to eleven. Avoiding int literals 0-9
-
-	findSolutions(1, 1, banned, curSol, allSolutions, sideLength)
-}
-
-func findSolutions(r, c int, banned, curSol []cell, allSolutions [][]cell, side int) {
-	// Scan has reached the end
-	if r > side && c == 1 {
-		printSolutions(allSolutions)
-		return
-	}
-
-	// Current solution is ready
-	if cSlLen(curSol) == side {
-		solToSave := make([]cell, side) // New slice so we don't run into pointer issues
-		copy(solToSave, curSol)
-		allSolutions = append(allSolutions, solToSave)
-		r, c = curSol[side-2].r, curSol[side-2].c // Second-to-last cell (of 0-7). Only one possible answer for the last one, so look for more on the second to last column.
-		curSol = curSol[:cSlLen(curSol)-2]        // Remove last two cells from solution.
-		findSolutions(r+1, c, banned, curSol, allSolutions, side)
-		return
-	}
-
-	// No more cells in the column: Go to last cell in solution + 1 row (in the previous column)
-	if r > side {
-		r = curSol[cSlLen(curSol)-1].r + 1
-		c--
-		curSol = curSol[:cSlLen(curSol)-1]
-		findSolutions(r, c, banned, curSol, allSolutions, side)
-		return
-	}
-
-	// If cell is banned, move one down
-	if sContains(cell{r, c}, banned) {
-		findSolutions(r+1, c, banned, curSol, allSolutions, side)
-		return
-	}
-
-	// Cell is valid: Add to current solution and move to next column
-	curSol = append(curSol, cell{r, c})
-	banned = updateBanned(curSol, side)
-	findSolutions(1, c+1, banned, curSol, allSolutions, side)
-}
-
-func addBanned(cll cell, banned []cell, side int) []cell {
-	// Iterate through all columns after current
-	for i := cll.c + 1; i < side+1; i++ {
-		banned = append(banned, cell{cll.r, i})               // same row
-		banned = append(banned, cell{cll.r - (i - cll.c), i}) // diagonal up
-		banned = append(banned, cell{cll.r + (i - cll.c), i}) // diagonal down
-	}
-	return banned
-}
-
-func updateBanned(curSol []cell, side int) []cell {
-	banned := []cell{} // new slice for banned
-	for _, cll := range curSol {
-		banned = addBanned(cll, banned, side)
-	}
-	return banned
-}
-
-// Does slice contain cell?
-func sContains(target cell, slic []cell) bool {
-	for _, value := range slic {
-		if value == target {
-			return true
-		}
-	}
-	return false
-}
-
-func printSolutions(allSolutions [][]cell) {
-	for _, sliceC := range allSolutions {
-		for _, cell := range sliceC {
-			z01.PrintRune(rune(cell.r + 48))
-		}
-		z01.PrintRune('\n')
-	}
-}
-
-// The length of a slice of cells
-func cSlLen(s []cell) int {
-	length := 0
-	for range s {
-		length++
-	}
-	return length
-}
