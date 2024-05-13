@@ -1,191 +1,118 @@
 package piscine
 
-func EightQueens() {
-	println(15863724 - 0)
-	println(16837425 - 0)
-	println(17468253 - 0)
-	println(17582463 - 0)
-	println(24683175 - 0)
-	println(25713864 - 0)
-	println(25741863 - 0)
-	println(26174835 - 0)
-	println(26831475 - 0)
-	println(27368514 - 0)
-	println(27581463 - 0)
-	println(28613574 - 0)
-	println(31758246 - 0)
-	println(35281746 - 0)
-	println(35286471 - 0)
-	println(35714286 - 0)
-	println(35841726 - 0)
-	println(36258174 - 0)
-	println(36271485 - 0)
-	println(36275184 - 0)
-	println(36418572 - 0)
-	println(36428571 - 0)
-	println(36814752 - 0)
-	println(36815724 - 0)
-	println(36824175 - 0)
-	println(37285146 - 0)
-	println(37286415 - 0)
-	println(38471625 - 0)
-	println(41582736 - 0)
-	println(41586372 - 0)
-	println(42586137 - 0)
-	println(42736815 - 0)
-	println(42736851 - 0)
-	println(42751863 - 0)
-	println(42857136 - 0)
-	println(42861357 - 0)
-	println(46152837 - 0)
-	println(46827135 - 0)
-	println(46831752 - 0)
-	println(47185263 - 0)
-	println(47382516 - 0)
-	println(47526138 - 0)
-	println(47531682 - 0)
-	println(48136275 - 0)
-	println(48157263 - 0)
-	println(48531726 - 0)
-	println(51468273 - 0)
-	println(51842736 - 0)
-	println(51863724 - 0)
-	println(52468317 - 0)
-	println(52473861 - 0)
-	println(52617483 - 0)
-	println(52814736 - 0)
-	println(53168247 - 0)
-	println(53172864 - 0)
-	println(53847162 - 0)
-	println(57138642 - 0)
-	println(57142863 - 0)
-	println(57248136 - 0)
-	println(57263148 - 0)
-	println(57263184 - 0)
-	println(57413862 - 0)
-	println(58413627 - 0)
-	println(58417263 - 0)
-	println(61528374 - 0)
-	println(62713584 - 0)
-	println(62714853 - 0)
-	println(63175824 - 0)
-	println(63184275 - 0)
-	println(63185247 - 0)
-	println(63571428 - 0)
-	println(63581427 - 0)
-	println(63724815 - 0)
-	println(63728514 - 0)
-	println(63741825 - 0)
-	println(64158273 - 0)
-	println(64285713 - 0)
-	println(64713528 - 0)
-	println(64718253 - 0)
-	println(68241753 - 0)
-	println(71386425 - 0)
-	println(72418536 - 0)
-	println(72631485 - 0)
-	println(73168524 - 0)
-	println(73825164 - 0)
-	println(74258136 - 0)
-	println(74286135 - 0)
-	println(75316824 - 0)
-	println(82417536 - 0)
-	println(82531746 - 0)
-	println(83162574 - 0)
-	println(84136275 - 0)
+import (
+	"github.com/01-edu/z01"
+)
+
+// A square on the chess board
+type cell struct {
+	r int // row
+	c int // column
 }
 
 /*
-15863724
-16837425
-17468253
-17582463
-24683175
-25713864
-25741863
-26174835
-26831475
-27368514
-27581463
-28613574
-31758246
-35281746
-35286471
-35714286
-35841726
-36258174
-36271485
-36275184
-36418572
-36428571
-36814752
-36815724
-36824175
-37285146
-37286415
-38471625
-41582736
-41586372
-42586137
-42736815
-42736851
-42751863
-42857136
-42861357
-46152837
-46827135
-46831752
-47185263
-47382516
-47526138
-47531682
-48136275
-48157263
-48531726
-51468273
-51842736
-51863724
-52468317
-52473861
-52617483
-52814736
-53168247
-53172864
-53847162
-57138642
-57142863
-57248136
-57263148
-57263184
-57413862
-58413627
-58417263
-61528374
-62713584
-62714853
-63175824
-63184275
-63185247
-63571428
-63581427
-63724815
-63728514
-63741825
-64158273
-64285713
-64713528
-64718253
-68241753
-71386425
-72418536
-72631485
-73168524
-73825164
-74258136
-74286135
-75316824
-82417536
-82531746
-83162574
-84136275
+FindSolutions(1,1, ...) scans an 8x8 square starting from the top left cell. If the
+cell in question it not on the list of banned cells, it is added to the current
+solution 'curSol' and a list of banned cells is regenerated based on curSol.
+The scan then moves on to the next column. It moves back and forth through
+the colums until the length of curSol is 8, which means a valid cell is found in
+every column. It then adds a copy of curSol to allSolutions and looks for more solutions.
+The scan completes when the function tries to look for more solutions starting from
+the 9th column of the 1st column. All found solutions are printed at the end.
 */
+
+// Scans a chessboard for solutions to the eight queens puzzle
+
+func EightQueens() {
+	banned := []cell{} // Slice of banned cells
+	curSol := []cell{} // The current solution
+	allSolutions := [][]cell{}
+	sideLength := 8 // Works for side lengths from 2 to 11
+
+	findSolutions(1, 1, banned, curSol, allSolutions, sideLength)
+}
+
+func findSolutions(r, c int, banned, curSol []cell, allSolutions [][]cell, side int) {
+	// Scan has reached the end
+	if r > side && c == 1 {
+		printSolutions(allSolutions)
+		return
+	}
+
+	// Current solution is ready
+	if cSlLen(curSol) == side {
+		solToSave := make([]cell, side) // New slice so we don't run into pointer issues
+		copy(solToSave, curSol)
+		allSolutions = append(allSolutions, solToSave)
+		r, c = curSol[side-2].r, curSol[side-2].c // Second-to-last cell (of 0-7). Only one possible answer for the last one, so look for more on the second to last column.
+		curSol = curSol[:cSlLen(curSol)-2]        // Remove last two cells from solution.
+		findSolutions(r+1, c, banned, curSol, allSolutions, side)
+		return
+	}
+
+	// No more cells in the column: Go to last cell in solution + 1 row (in the previous column)
+	if r > side {
+		r = curSol[cSlLen(curSol)-1].r + 1
+		c--
+		curSol = curSol[:cSlLen(curSol)-1]
+		findSolutions(r, c, banned, curSol, allSolutions, side)
+		return
+	}
+
+	// If cell is banned, move one down
+	if sContains(cell{r, c}, banned) {
+		findSolutions(r+1, c, banned, curSol, allSolutions, side)
+		return
+	}
+
+	// Cell is valid: Add to current solution and move to next column
+	curSol = append(curSol, cell{r, c})
+	banned = updateBanned(curSol, side)
+	findSolutions(1, c+1, banned, curSol, allSolutions, side)
+}
+
+func addBanned(cll cell, banned []cell, side int) []cell {
+	// Iterate through all columns after current
+	for i := cll.c + 1; i < side+1; i++ {
+		banned = append(banned, cell{cll.r, i})               // same row
+		banned = append(banned, cell{cll.r - (i - cll.c), i}) // diagonal up
+		banned = append(banned, cell{cll.r + (i - cll.c), i}) // diagonal down
+	}
+	return banned
+}
+
+func updateBanned(curSol []cell, side int) []cell {
+	banned := []cell{} // new slice for banned
+	for _, cll := range curSol {
+		banned = addBanned(cll, banned, side)
+	}
+	return banned
+}
+
+// Does slice contain cell?
+func sContains(target cell, slic []cell) bool {
+	for _, value := range slic {
+		if value == target {
+			return true
+		}
+	}
+	return false
+}
+
+func printSolutions(allSolutions [][]cell) {
+	for _, sliceC := range allSolutions {
+		for _, cell := range sliceC {
+			z01.PrintRune(rune(cell.r + 48))
+		}
+		z01.PrintRune('\n')
+	}
+}
+
+// The length of a slice of cells
+func cSlLen(s []cell) int {
+	length := 0
+	for range s {
+		length++
+	}
+	return length
+}
