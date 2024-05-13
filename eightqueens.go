@@ -11,7 +11,7 @@ type cell struct {
 }
 
 /*
-FindSolutions(1,1) scans an 8x8 square starting from the top left cell. If the
+FindSolutions(1,1, ...) scans an 8x8 square starting from the top left cell. If the
 cell in question it not on the list of banned cells, it is added to the current
 solution 'curSol' and a list of banned cells is regenerated based on curSol.
 The scan then moves on to the next column. It moves back and forth through
