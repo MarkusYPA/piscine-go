@@ -1,8 +1,6 @@
 package piscine
 
 import (
-	"fmt"
-
 	"github.com/01-edu/z01"
 )
 
@@ -67,7 +65,6 @@ func PrintNbrBase(nbr int, base string) {
 	}
 
 	exponent := HiPower(bsLen, nbr)
-	fmt.Println(exponent)
 	slotValue := Power(bsLen, exponent)
 	multiplier := nbr / slotValue
 	remains := nbr - slotValue*multiplier
