@@ -14,6 +14,10 @@ func Index(s string, toFind string) int {
 		lSs++
 	}
 
+	if lS < lSs {
+		return -1
+	}
+
 	indexOfSs := -1
 	isMatch := false
 
