@@ -8,7 +8,7 @@ func Capitalize(s string) string {
 	prevIsLetter := false
 
 	for i := 0; i < len(rns); i++ {
-		if (rns[i] >= 'A' && rns[i] <= 'Z') || (rns[i] >= 'a' && rns[i] <= 'z') {
+		if (rns[i] >= '0' && rns[i] <= '9') || (rns[i] >= 'A' && rns[i] <= 'Z') || (rns[i] >= 'a' && rns[i] <= 'z') {
 			isLetter = true
 
 			if rns[i] >= 'a' && rns[i] <= 'z' {
