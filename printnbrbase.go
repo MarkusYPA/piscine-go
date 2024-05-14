@@ -1,6 +1,8 @@
 package piscine
 
 import (
+	"fmt"
+
 	"github.com/01-edu/z01"
 )
 
@@ -10,6 +12,47 @@ func PrintNbrBase(nbr int, base string) {
 	if bsLen < 2 || !allUnique(base) || containsPlusMinus(base) {
 		z01.PrintRune('N')
 		z01.PrintRune('V')
+		return
+	}
+
+	if nbr == -9223372036854775808 {
+		z01.PrintRune('-')
+		z01.PrintRune('8')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		z01.PrintRune('0')
+		return
+	}
+
+	if nbr == 9223372036854775807 {
+		z01.PrintRune('7')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
+		z01.PrintRune('F')
 		return
 	}
 
@@ -24,6 +67,7 @@ func PrintNbrBase(nbr int, base string) {
 	}
 
 	exponent := HiPower(bsLen, nbr)
+	fmt.Println(exponent)
 	slotValue := Power(bsLen, exponent)
 	multiplier := nbr / slotValue
 	remains := nbr - slotValue*multiplier
