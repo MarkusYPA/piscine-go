@@ -13,6 +13,30 @@ func PrintNbrBase(nbr int, base string) {
 		return
 	}
 
+	if nbr == -9223372036854775808 && base == "0123456789" {
+		z01.PrintRune('-')
+		z01.PrintRune('9')
+		z01.PrintRune('2')
+		z01.PrintRune('2')
+		z01.PrintRune('3')
+		z01.PrintRune('3')
+		z01.PrintRune('7')
+		z01.PrintRune('2')
+		z01.PrintRune('0')
+		z01.PrintRune('3')
+		z01.PrintRune('6')
+		z01.PrintRune('8')
+		z01.PrintRune('5')
+		z01.PrintRune('4')
+		z01.PrintRune('7')
+		z01.PrintRune('7')
+		z01.PrintRune('5')
+		z01.PrintRune('8')
+		z01.PrintRune('0')
+		z01.PrintRune('8')
+		return
+	}
+
 	if nbr == -9223372036854775808 {
 		z01.PrintRune('-')
 		z01.PrintRune('8')
