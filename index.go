@@ -25,7 +25,7 @@ func Index(s string, toFind string) int {
 		if s[i] == toFind[0] {
 
 			for j := 0; j < lSs; j++ {
-				if s[i+j] == toFind[j] {
+				if i+j < lS && (s[i+j] == toFind[j]) {
 					indexOfSs = i
 					isMatch = true
 				} else {
