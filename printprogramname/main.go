@@ -10,4 +10,5 @@ func main() {
 	for _, v := range os.Args[0] {
 		z01.PrintRune(v)
 	}
+	z01.PrintRune('\n')
 }
