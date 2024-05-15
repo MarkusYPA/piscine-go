@@ -10,6 +10,10 @@ func main() {
 	capitals := 0
 	skip1 := 0
 
+	if len(os.Args) < 2 {
+		return
+	}
+
 	if os.Args[1] == "--upper" {
 		capitals = -32
 		skip1 = 1
