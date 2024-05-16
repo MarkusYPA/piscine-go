@@ -1,5 +1,6 @@
 package piscine
 
+// Converts the string number s in base 'base' to a decimal integer
 func AtoiBase(s string, base string) int {
 	bsLen := len(base)
 	mult := 1
