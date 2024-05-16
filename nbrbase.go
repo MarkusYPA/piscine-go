@@ -1,5 +1,6 @@
 package piscine
 
+// Convert decimal number to string in base 'base'
 func NbrBase(nbr int, base string) string {
 	bsLen := len(base)
 	toReturn := ""
