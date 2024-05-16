@@ -15,6 +15,10 @@ func SplitWhiteSpaces(s string) []string {
 				i++
 			}
 			toAdd = "" // Add empty when space, tab or newline
+
+			if i == 0 && s[0] == ' ' {
+				toAdd = " "
+			}
 		}
 
 		str[index] += toAdd
