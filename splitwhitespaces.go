@@ -17,15 +17,7 @@ func SplitWhiteSpaces(s string) []string {
 				str = append(str, "") // New string to add to unless two white spaces
 			}
 
-			if s[i:i+2] == "\n" {
-				i++
-			}
-
-			if i == 0 && s[0] == ' ' {
-				toAdd = " "
-			} else {
-				continue
-			}
+			continue
 		}
 
 		str[index] += toAdd
