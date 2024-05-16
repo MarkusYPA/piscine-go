@@ -2,20 +2,22 @@ package piscine
 
 func SplitWhiteSpaces(s string) []string {
 	str := []string{}
-	str = append(str, "")
+	str = append(str, "") // String to index 0
 
 	index := 0
 
-	for i, v := range s {
-		if v == 9 || v == ' ' || (len(s) > i+1 && s[i:i+2] == "\n") { // ascii 9 is tab
+	for i := 0; i < len(s); i++ {
+		toAdd := string(s[i])
+		if s[i] == 9 || s[i] == ' ' || (len(s) > i+1 && s[i:i+2] == "\n") { // ascii 9 is tab
 			index++
-			str = append(str, "")
+			str = append(str, "") // New string to add to
 			if s[i:i+2] == "\n" {
 				i++
 			}
-			continue
+			toAdd = "" // Add empty when space, tab or newline
 		}
-		str[index] += string(v)
+
+		str[index] += toAdd
 	}
 
 	return str
