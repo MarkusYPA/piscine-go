@@ -11,7 +11,7 @@ func MakeRange(min, max int) []int {
 	ints := make([]int, length)
 
 	for i := 0; i < length; i++ {
-		ints[i] = i
+		ints[i] = min + i
 	}
 
 	return ints
