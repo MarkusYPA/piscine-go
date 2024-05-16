@@ -10,10 +10,10 @@ func Split(s, sep string) []string {
 		toAdd := s[i]
 
 		// Check if at beginning of separator
-		if len(s) > i+1 && s[i:i+len(sep)] == sep {
+		if len(s) >= i+len(sep) && s[i:i+len(sep)] == sep {
 
 			// New string to add to unless next is separator too
-			if len(s) > i+2 && s[i+2:i+2+len(sep)] != sep {
+			if len(s) >= i+len(sep)*2 && s[i+2:i+2+len(sep)] != sep {
 				index++
 				output = append(output, "")
 			}
