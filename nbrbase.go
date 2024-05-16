@@ -107,6 +107,16 @@ func containsPlusMinus(s string) bool {
 func hiPowerMin(base int) int {
 	pows := 0
 
+	if base > 128 && base <= 234 {
+		return 8
+	}
+	if base > 234 && base <= 512 {
+		return 7
+	}
+	if base > 512 && base <= 512 {
+		return 7
+	}
+
 	switch base {
 	case 2:
 		pows = 63
@@ -142,8 +152,12 @@ func hiPowerMin(base int) int {
 		pows = 13
 	case 29, 30, 31, 32, 33, 34, 35, 36, 37, 38:
 		pows = 12
-	default:
+	case 93, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52:
 		pows = 11
+	case 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77:
+		pows = 10
+	default:
+		pows = 9 // Correct up to base 128
 	}
 
 	return pows
