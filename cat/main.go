@@ -13,13 +13,12 @@ func main() {
 		printStr("Hello")
 		printStr("Hello")
 	} else {
-
 		for _, arg := range args {
 
 			file, err := os.Open(arg)
 			if err != nil {
 				printStr("ERROR: " + err.Error())
-				//os.Exit(1)
+				// os.Exit(1)
 				return
 			}
 			defer file.Close()
