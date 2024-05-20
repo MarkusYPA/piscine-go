@@ -11,10 +11,6 @@ func main() {
 
 	for _, arg := range args {
 
-		/* 		if i != 0 {
-			printStr("")
-		} */
-
 		file, err := os.Open(arg)
 		if err != nil {
 			printStr("ERROR: " + err.Error())
@@ -29,14 +25,10 @@ func main() {
 		}
 
 		arr := make([]byte, fileInfo.Size())
-		arr = append(arr, byte('\n'))
+		// arr = append(arr, byte('\n'))
 		file.Read(arr)
 		os.Stdout.Write(arr)
-		// printStr("")
-		// os.Stdout.Write([]byte("\n"))
-		// os.Stdout.Sync()
 	}
-	// printStr("")
 }
 
 func printStr(s string) {
