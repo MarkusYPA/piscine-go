@@ -33,6 +33,7 @@ func main() {
 			file, err := os.Open(arg)
 			if err != nil {
 				printStr("ERROR: " + err.Error())
+				z01.PrintRune('\n')
 				os.Exit(1)
 			}
 			defer file.Close()
@@ -40,6 +41,7 @@ func main() {
 			fileInfo, err := file.Stat()
 			if err != nil {
 				printStr("ERROR: " + err.Error())
+				z01.PrintRune('\n')
 				os.Exit(1)
 			}
 
