@@ -18,15 +18,16 @@ func main() {
 			file, err := os.Open(arg)
 			if err != nil {
 				printStr("ERROR: " + err.Error())
-				// os.Exit(1)
-				return
+				os.Exit(1)
+				// return
 			}
 			defer file.Close()
 
 			fileInfo, err := file.Stat()
 			if err != nil {
 				printStr("ERROR: " + err.Error())
-				return
+				os.Exit(1)
+				// return
 			}
 
 			arr := make([]byte, fileInfo.Size())
