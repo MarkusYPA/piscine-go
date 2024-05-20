@@ -22,8 +22,7 @@ func main() {
 	xString := nbrBase(points.x, "0123456789")
 	yString := nbrBase(points.y, "0123456789")
 
-	printStr("x = " + xString)
-	printStr("y = " + yString)
+	printStr("x = " + xString + ", " + "y = " + yString)
 }
 
 func printStr(s string) {
