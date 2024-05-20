@@ -10,7 +10,7 @@ func main() {
 	args := os.Args[1:]
 
 	if len(args) == 0 {
-		os.Exit(1)
+		os.Exit(0)
 	} else {
 		for _, arg := range args {
 
