@@ -21,8 +21,6 @@ func main() {
 			if numberOfBytesRead != 0 {
 				toPrint := string(input[:numberOfBytesRead])
 				printStr(toPrint)
-
-				// fmt.Printf("%s", input[:numberOfBytesRead])
 			} else {
 				os.Exit(1) // exit at end-of-file
 			}
@@ -57,5 +55,5 @@ func printStr(s string) {
 	for _, r := range s {
 		z01.PrintRune(r)
 	}
-	z01.PrintRune('\n')
+	// z01.PrintRune('\n')
 }
