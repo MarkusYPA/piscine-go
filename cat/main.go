@@ -18,12 +18,8 @@ func main() {
 				os.Exit(0) // Error: EOF > exit, In second round when no bytes have been read?
 			}
 
-			if numberOfBytesRead != 0 {
-				toPrint := string(input[:numberOfBytesRead])
-				printStr(toPrint)
-			} else {
-				os.Exit(1) // exit at end-of-file
-			}
+			toPrint := string(input[:numberOfBytesRead])
+			printStr(toPrint)
 
 			input = make([]byte, 1024) // reset slice
 		}
@@ -46,7 +42,6 @@ func main() {
 			}
 
 			arr := make([]byte, fileInfo.Size())
-			// arr = append(arr, byte('\n'))
 			file.Read(arr)
 			os.Stdout.Write(arr)
 		}
@@ -57,5 +52,4 @@ func printStr(s string) {
 	for _, r := range s {
 		z01.PrintRune(r)
 	}
-	// z01.PrintRune('\n')
 }
