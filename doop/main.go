@@ -47,7 +47,7 @@ func minus(a, b int) int {
 
 func divi(a, b int) int {
 	if b == 0 {
-		os.Stdout.WriteString("No division by 0")
+		os.Stdout.WriteString("No division by 0") // Do without line change at end
 		os.Exit(0)
 	}
 	return a / b
@@ -59,7 +59,7 @@ func multi(a, b int) int {
 
 func modulo(a, b int) int {
 	if b == 0 {
-		os.Stdout.WriteString("No modulo by 0")
+		os.Stdout.WriteString("No modulo by 0") // Do without line change at end
 		os.Exit(0)
 	}
 	return a % b
@@ -68,7 +68,7 @@ func modulo(a, b int) int {
 func printToStdout(i int) {
 	str := intToString(i)
 	os.Stdout.WriteString(str)
-	os.Stdout.WriteString("\n")
+	// os.Stdout.WriteString("\n")
 }
 
 func intToString(i int) string {
