@@ -48,7 +48,7 @@ func minus(a, b int) int {
 func divi(a, b int) int {
 	if b == 0 {
 		os.Stdout.WriteString("No division by 0")
-		os.Exit(1)
+		os.Exit(0)
 	}
 	return a / b
 }
