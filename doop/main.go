@@ -15,7 +15,6 @@ func main() {
 
 	if err1 != "" || err2 != "" {
 		return
-		// os.Exit(0)
 	}
 
 	checkOverflow(operand1, operand2)
@@ -29,7 +28,8 @@ func main() {
 		printToStdout(funcs[1](operand1, operand2))
 	case "/":
 		if operand2 == 0 {
-			os.Stdout.WriteString("No division by 0") // Without line change
+			os.Stdout.WriteString("No division by 0")
+			os.Stdout.WriteString("\n")
 			return
 		}
 		printToStdout(funcs[2](operand1, operand2))
@@ -37,7 +37,8 @@ func main() {
 		printToStdout(funcs[3](operand1, operand2))
 	case "%":
 		if operand2 == 0 {
-			os.Stdout.WriteString("No modulo by 0") // Without line change
+			os.Stdout.WriteString("No modulo by 0")
+			os.Stdout.WriteString("\n")
 			return
 		}
 		printToStdout(funcs[4](operand1, operand2))
