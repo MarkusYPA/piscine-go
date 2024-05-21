@@ -23,15 +23,15 @@ func main() {
 
 	switch operator {
 	case "+":
-		println(funcs[0](operand1, operand2))
+		printToStdout(funcs[0](operand1, operand2))
 	case "-":
-		println(funcs[1](operand1, operand2))
+		printToStdout(funcs[1](operand1, operand2))
 	case "/":
-		println(funcs[2](operand1, operand2))
+		printToStdout(funcs[2](operand1, operand2))
 	case "*":
-		println(funcs[3](operand1, operand2))
+		printToStdout(funcs[3](operand1, operand2))
 	case "%":
-		println(funcs[4](operand1, operand2))
+		printToStdout(funcs[4](operand1, operand2))
 	default:
 		os.Exit(1)
 	}
@@ -47,7 +47,7 @@ func minus(a, b int) int {
 
 func divi(a, b int) int {
 	if b == 0 {
-		println("No division by 0")
+		os.Stdout.WriteString("No division by 0")
 		os.Exit(1)
 	}
 	return a / b
@@ -59,10 +59,37 @@ func multi(a, b int) int {
 
 func modulo(a, b int) int {
 	if b == 0 {
-		println("No modulo by 0")
+		os.Stdout.WriteString("No modulo by 0")
 		os.Exit(1)
 	}
 	return a % b
+}
+
+func printToStdout(i int) {
+	str := intToString(i)
+	os.Stdout.WriteString(str)
+	os.Stdout.WriteString("\n")
+}
+
+func intToString(i int) string {
+	out := ""
+	minus := ""
+	if i < 0 {
+		if i == -9223372036854775808 {
+			return "-9223372036854775808"
+		}
+		i *= -1
+		minus = "-"
+	}
+	if i == 0 {
+		return "0"
+	}
+	for i > 0 {
+		r := rune(i%10 + 48)
+		out = string(r) + out
+		i /= 10
+	}
+	return minus + out
 }
 
 func stringToInt(s string) (int, string) {
