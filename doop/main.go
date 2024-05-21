@@ -6,7 +6,7 @@ import (
 
 func main() {
 	if len(os.Args) != 4 {
-		os.Exit(1)
+		os.Exit(0)
 	}
 	args := os.Args[1:]
 	operator := args[1]
@@ -14,7 +14,7 @@ func main() {
 	operand2, err2 := stringToInt(args[2])
 
 	if err1 != "" || err2 != "" {
-		os.Exit(1)
+		os.Exit(0)
 	}
 
 	checkOverflow(operand1, operand2)
@@ -33,7 +33,7 @@ func main() {
 	case "%":
 		printToStdout(funcs[4](operand1, operand2))
 	default:
-		os.Exit(1)
+		os.Exit(0)
 	}
 }
 
@@ -60,7 +60,7 @@ func multi(a, b int) int {
 func modulo(a, b int) int {
 	if b == 0 {
 		os.Stdout.WriteString("No modulo by 0")
-		os.Exit(1)
+		os.Exit(0)
 	}
 	return a % b
 }
@@ -122,9 +122,9 @@ func stringToInt(s string) (int, string) {
 
 func checkOverflow(a, b int) {
 	if a < -922337203685477580 || a > 922337203685477580 { // minimum and maximun values without last digit
-		os.Exit(1)
+		os.Exit(0)
 	}
 	if b < -922337203685477580 || b > 922337203685477580 {
-		os.Exit(1)
+		os.Exit(0)
 	}
 }
