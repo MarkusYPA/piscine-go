@@ -28,10 +28,18 @@ func main() {
 	case "-":
 		printToStdout(funcs[1](operand1, operand2))
 	case "/":
+		if operand2 == 0 {
+			os.Stdout.WriteString("No division by 0") // Without line change
+			return
+		}
 		printToStdout(funcs[2](operand1, operand2))
 	case "*":
 		printToStdout(funcs[3](operand1, operand2))
 	case "%":
+		if operand2 == 0 {
+			os.Stdout.WriteString("No modulo by 0") // Without line change
+			return
+		}
 		printToStdout(funcs[4](operand1, operand2))
 	default:
 		return
@@ -48,10 +56,6 @@ func minus(a, b int) int {
 }
 
 func divi(a, b int) int {
-	if b == 0 {
-		os.Stdout.WriteString("No division by 0") // Do without line change at end
-		// os.Exit(0)
-	}
 	return a / b
 }
 
@@ -60,10 +64,6 @@ func multi(a, b int) int {
 }
 
 func modulo(a, b int) int {
-	if b == 0 {
-		os.Stdout.WriteString("No modulo by 0") // Do without line change at end
-		// os.Exit(0)
-	}
 	return a % b
 }
 
