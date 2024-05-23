@@ -1,7 +1,12 @@
 package piscine
 
 func CollatzCountdown(start int) int {
+	if start < 1 {
+		return -1
+	}
+
 	steps := 0
+
 	return collatzHelper(start, steps)
 }
 
@@ -9,7 +14,9 @@ func collatzHelper(start, steps int) int {
 	if start == 1 {
 		return steps
 	}
+
 	steps++
+
 	if start%2 == 0 {
 		return collatzHelper(start/2, steps)
 	} else {
