@@ -8,6 +8,5 @@ func Join(strs []string, sep string) string {
 			result += sep
 		}
 	}
-
 	return result
 }
