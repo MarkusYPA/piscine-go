@@ -9,7 +9,6 @@ func SortListInsert(l *NodeI, data_ref int) *NodeI {
 	subsequent := l.Next
 
 	for subsequent != nil {
-
 		// This can only happen for the first item on the list
 		if data_ref < current.Data {
 			newNode := &NodeI{Data: data_ref, Next: current}
@@ -24,6 +23,12 @@ func SortListInsert(l *NodeI, data_ref int) *NodeI {
 
 		current = subsequent
 		subsequent = current.Next
+	}
+
+	if data_ref >= current.Data {
+		newNode := &NodeI{Data: data_ref}
+		current.Next = newNode
+		return l
 	}
 
 	return l
