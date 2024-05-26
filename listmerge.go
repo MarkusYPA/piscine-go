@@ -8,10 +8,12 @@ func ListMerge(l1 *List, l2 *List) {
 	}
 
 	if l1 == nil && l2 != nil {
-		l1 = l2
+		l1.Head = l2.Head
+		l1.Tail = l2.Tail
 	}
 
 	if l1 != nil && l2 == nil {
-		l2 = l1
+		l2.Head = l1.Head
+		l2.Tail = l1.Tail
 	}
 }
