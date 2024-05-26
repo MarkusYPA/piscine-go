@@ -10,6 +10,7 @@ func ListFind(l *List, ref interface{}, comp func(a, b interface{}) bool) *inter
 		if comp(current.Data, ref) {
 			return &current.Data
 		}
+		current = current.Next
 	}
 	return nil
 }
