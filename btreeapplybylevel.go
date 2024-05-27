@@ -9,7 +9,6 @@ func BTreeApplyByLevel(root *TreeNode, f func(...interface{}) (int, error)) {
 	queue := []*TreeNode{root}
 
 	for len(queue) > 0 {
-
 		// Traverse nodes at the current level
 		for i := 0; i < len(queue); i++ {
 
