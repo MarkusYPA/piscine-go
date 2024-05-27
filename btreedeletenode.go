@@ -3,7 +3,7 @@ package piscine
 func BTreeDeleteNode(root, node *TreeNode) *TreeNode {
 	// Save the data from deletee's right
 	dataToMove := []string{}
-	dataToMove = getTreeData(node.Right, dataToMove)
+	dataToMove = getTreeData(node.Right, &dataToMove)
 
 	// Replace deletee with its left
 	root = BTreeTransplant(root, node, node.Left)
@@ -15,12 +15,12 @@ func BTreeDeleteNode(root, node *TreeNode) *TreeNode {
 	return root
 }
 
-func getTreeData(root *TreeNode, data []string) []string {
+func getTreeData(root *TreeNode, data *[]string) []string {
 	if root == nil {
-		return data
+		return *data
 	}
-	data = append(data, root.Data)
+	*data = append(*data, root.Data)
 	getTreeData(root.Left, data)
 	getTreeData(root.Right, data)
-	return data
+	return *data
 }
