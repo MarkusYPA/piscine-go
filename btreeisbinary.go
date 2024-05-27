@@ -1,24 +1,22 @@
 package piscine
 
 func BTreeIsBinary(root *TreeNode) bool {
-	rightIsBin := true
-	leftIsBin := true
-
 	if root == nil {
-		return true
+		return true // No faults found up to now
 	}
 
-	if root.Left != nil {
-		return root.Data > root.Left.Data
-	}
-	if root.Right != nil {
-		return root.Data <= root.Right.Data
+	if root.Left != nil && root.Data < root.Left.Data {
+		return false
 	}
 
-	leftIsBin = BTreeIsBinary(root.Left)
-	rightIsBin = BTreeIsBinary(root.Right)
+	if root.Right != nil && root.Data > root.Right.Data {
+		return false
+	}
 
-	if !leftIsBin || !rightIsBin {
+	left := BTreeIsBinary(root.Left)
+	right := BTreeIsBinary(root.Right)
+
+	if !left || !right {
 		return false
 	}
 
