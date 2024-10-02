@@ -31,6 +31,7 @@ func BTreeApplyByLevel(root *TreeNode, f func(...interface{}) (int, error)) {
 			// fmt.Println("Queue  ---  ", queue)
 		}
 	}
+
 }
 
 /*
